@@ -1,6 +1,6 @@
 # Maintainer: bouquetf <bouquet.frederic@gmail.com>
 pkgname=next
-pkgver=1.0.1
+pkgver=VERSION
 pkgrel=1
 depends=(tomcat7)
 arch=('any')
