@@ -13,7 +13,7 @@ backup=(etc/$pkgname/server.xml
         etc/$pkgname/context.xml
        )
 
-source=($pkgname-$pkgver.war
+source=(target/$pkgname-$pkgver.war
         web.xml
         server.xml
         context.xml
@@ -21,7 +21,7 @@ source=($pkgname-$pkgver.war
        	systemd_tmpfiles.d_next.conf
 )
 
-noextract=($pkgname-$pkgver.war)
+noextract=(target/$pkgname-$pkgver.war)
 
 package() {
   #log
@@ -34,8 +34,8 @@ package() {
   #webapp
   install -dm775 ${pkgdir}/var/lib/${pkgname}
   install -dm775 ${pkgdir}/var/lib/${pkgname}/webapps
-  cp $srcdir/$pkgname-$pkgver.war ${pkgdir}/var/lib/${pkgname}/webapps/
-  unzip $srcdir/${pkgname}-${pkgver}.war -d ${pkgdir}/var/lib/${pkgname}/webapps/$pkgname-$pkgver
+  cp $srcdir/target/$pkgname-$pkgver.war ${pkgdir}/var/lib/${pkgname}/webapps/
+  unzip $srcdir/target/$pkgname-$pkgver.war -d ${pkgdir}/var/lib/${pkgname}/webapps/$pkgname-$pkgver
   ln -s $pkgname-$pkgver ${pkgdir}/var/lib/${pkgname}/webapps/ROOT
   chown -R 71:71 ${pkgdir}/var/lib/${pkgname}
   ln -s /var/lib/${pkgname}/webapps ${pkgdir}/usr/share/${pkgname}/webapps
